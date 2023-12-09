@@ -2,6 +2,7 @@
 @section('content')
 
 <div class="container mt-5">
+    <a href="{{ route('etudiant.index') }}" class="btn btn-outline-primary">Returner</a>
     <div class="row">
         <div class="col-12 pt-2">
             <h4 class="display-4 mt-2">
@@ -41,7 +42,7 @@
     
         </div>
     
-        {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -67,8 +68,8 @@
                 </div>
             </div>
         </div>
-</div> --}}
-<a href="{{ route('etudiant.index') }}" class="btn btn-outline-primary">Returner</a>
+</div>
+
 </div>
 
 

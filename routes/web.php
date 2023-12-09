@@ -46,4 +46,9 @@ Route::get(
 Route::put(
     '/etudiant-edit/{etudiant}',
     [App\Http\Controllers\EtudiantController::class, 'update']
-    )->name('etudiant.update');
+    )->name('etudiant.edit');
+// route suppression d'un étudiant
+Route::delete(
+    '/etudiant-delete/{etudiant}',
+    [App\Http\Controllers\EtudiantController::class, 'destroy']
+    )->name('etudiant.destroy');
