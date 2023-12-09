@@ -18,9 +18,11 @@ return new class extends Migration
             $table->string('phone', 20);
             $table->string('email', 100)->unique();
             $table->date('date_naissance');
-            $table->unsignedBigInteger('ville_id');
+            $table->integer('ville_id');
             $table->timestamps();
-
+            
+        });
+        Schema::table('etudiants', function (Blueprint $table) {
             $table->foreign('ville_id')->references('id')->on('villes');
         });
     }
