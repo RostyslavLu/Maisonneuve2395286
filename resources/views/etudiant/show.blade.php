@@ -30,7 +30,7 @@
             </p>
         </div>
     </div>
-    {{-- <div class="row">
+    <div class="row">
         <div class="col-6">
             <a href="{{ route('etudiant.edit', $etudiant->id) }}" class="btn btn-outline-success">Modifier</a>
         </div>
@@ -41,7 +41,7 @@
     
         </div>
     
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

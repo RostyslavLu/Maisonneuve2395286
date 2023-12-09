@@ -37,3 +37,8 @@ Route::get(
     '/etudiant/{etudiant}',
     [App\Http\Controllers\EtudiantController::class, 'show']
     )->name('etudiant.show');
+// route page formulaire d'édition d'un étudiant
+Route::get(
+    '/etudiant-edit/{etudiant}',
+    [App\Http\Controllers\EtudiantController::class, 'edit']
+    )->name('etudiant.edit');
