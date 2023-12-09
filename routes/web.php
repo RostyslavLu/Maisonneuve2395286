@@ -12,7 +12,13 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+// route page d'accueil
+Route::get('/',
+    function() {
+    return view('home');
 });
+// route page liste des étudiants
+Route::get(
+    '/etudiant',
+    [App\Http\Controllers\EtudiantController::class, 'index']
+    )->name('etudiant.index');
