@@ -42,3 +42,8 @@ Route::get(
     '/etudiant-edit/{etudiant}',
     [App\Http\Controllers\EtudiantController::class, 'edit']
     )->name('etudiant.edit');
+// route stockage des données du formulaire d'édition d'un étudiant
+Route::put(
+    '/etudiant-edit/{etudiant}',
+    [App\Http\Controllers\EtudiantController::class, 'update']
+    )->name('etudiant.update');

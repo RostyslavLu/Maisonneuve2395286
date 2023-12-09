@@ -63,7 +63,8 @@ class EtudiantController extends Controller
     public function edit(Etudiant $etudiant)
     {
         //
-        return view('etudiant.edit', compact('etudiant'));
+        $villes = DB::table('villes')->select()->get();
+        return view('etudiant.edit', compact('etudiant', 'villes'));
     }
 
     /**
@@ -72,6 +73,15 @@ class EtudiantController extends Controller
     public function update(Request $request, Etudiant $etudiant)
     {
         //
+        $etudiant->update([
+            'nom' => $request->nom,
+            'adresse' => $request->adresse,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'date_naissance' => $request->date_naissance,
+            'ville_id' => $request->ville_id
+        ]);
+        return redirect()->route('etudiant.show', $etudiant->id)->withSuccess('Etudiant modifié avec succès');
     }
 
     /**
