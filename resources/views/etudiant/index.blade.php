@@ -17,7 +17,7 @@
     @forelse($etudiants as $etudiant)
     <tr>
         <th scope="row">{{ $etudiant->id }}</th>
-        <td>{{ $etudiant->nom }}</td>
+        <td><a href="{{ route('etudiant.show', $etudiant->id) }}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-black">{{ $etudiant->nom }}</a></td>
         <td>{{ $etudiant->adresse }}</td>
         <td>{{ $etudiant->phone }}</td>
         <td>{{ $etudiant->email }}</td>

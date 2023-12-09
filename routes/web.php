@@ -21,7 +21,7 @@ Route::get('/',
 Route::get(
     '/etudiant',
     [App\Http\Controllers\EtudiantController::class, 'index']
-    );
+    )->name('etudiant.index');
 // route page formulaire de création d'un étudiant
 Route::get(
     '/etudiant-create',
@@ -32,3 +32,8 @@ Route::post(
     '/etudiant-create',
     [App\Http\Controllers\EtudiantController::class, 'store']
     )->name('etudiant.store');
+// route page show d'un étudiant
+Route::get(
+    '/etudiant/{etudiant}',
+    [App\Http\Controllers\EtudiantController::class, 'show']
+    )->name('etudiant.show');

@@ -43,7 +43,7 @@ class EtudiantController extends Controller
             'date_naissance' => $request->date_naissance,
             'ville_id' => $request->ville_id
         ]);
-        return redirect()->route('etudiant.index', $newEtudiant->id)->withSuccess('Etudiant créé avec succès');
+        return redirect()->route('etudiant.show', $newEtudiant->id)->withSuccess('Etudiant créé avec succès');
     }
 
     /**
@@ -52,6 +52,8 @@ class EtudiantController extends Controller
     public function show(Etudiant $etudiant)
     {
         //
+        $etudiant = Etudiant::select()->where('id', $etudiant->id)->first();
+        return view('etudiant.show', compact('etudiant'));
 
     }
 
