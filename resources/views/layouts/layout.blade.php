@@ -12,22 +12,17 @@
 </head>
 </head>
 <body>
+    
     <header class="p-3 text-bg-dark">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                        <use xlink:href="#bootstrap" />
-                    </svg>
-                </a>
-
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Accueil</a></li>
+                    <li class="nav-item"><a href="/" class="nav-link px-2 text-white">Accueil</a></li>
                     <li class="nav-item dropdown"><a href="#" class="nav-link px-2 text-white dropdown-toggle"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">Étudiants</a>
                         <ul class="dropdown-menu">
-                            <li><a href="" class="dropdown-item">Liste des étudiants</a></li>
-                            <li><a href="" class="dropdown-item">Ajouter un étudiant</a></li>
+                            <li><a href="/etudiant" class="dropdown-item">Liste des étudiants</a></li>
+                            <li><a href="/etudiant-create" class="dropdown-item">Ajouter un étudiant</a></li>
                         </ul>
                     </li>
                 </ul>

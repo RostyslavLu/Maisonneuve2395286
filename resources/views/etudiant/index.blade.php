@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container-lg mt-5">
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -21,7 +21,7 @@
         <td>{{ $etudiant->adresse }}</td>
         <td>{{ $etudiant->phone }}</td>
         <td>{{ $etudiant->email }}</td>
-        <td>{{ $etudiant->ville_id }}</td>
+        <td>{{ $etudiant->etudiantHasVille?->nom }}</td>
     </tr>
     
     @empty
@@ -29,8 +29,10 @@
     @endforelse
         </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+        {{ $etudiants->links() }}
+    </div>
 
-{{ $etudiants->links() }}
 
 </div>
 @endsection

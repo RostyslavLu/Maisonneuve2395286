@@ -22,3 +22,13 @@ Route::get(
     '/etudiant',
     [App\Http\Controllers\EtudiantController::class, 'index']
     );
+// route page formulaire de création d'un étudiant
+Route::get(
+    '/etudiant-create',
+    [App\Http\Controllers\EtudiantController::class, 'create']
+    )->name('etudiant.create');
+// route stockage des données du formulaire de création d'un étudiant
+Route::post(
+    '/etudiant-create',
+    [App\Http\Controllers\EtudiantController::class, 'store']
+    )->name('etudiant.store');

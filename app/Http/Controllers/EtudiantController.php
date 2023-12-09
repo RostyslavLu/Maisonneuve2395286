@@ -24,6 +24,9 @@ class EtudiantController extends Controller
     public function create()
     {
         //
+        $villes = DB::table('villes')->select()->get();
+        return view('etudiant.create', compact('villes'));
+
     }
 
     /**
@@ -32,6 +35,15 @@ class EtudiantController extends Controller
     public function store(Request $request)
     {
         //
+        $newEtudiant = Etudiant::create([
+            'nom' => $request->nom,
+            'adresse' => $request->adresse,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'date_naissance' => $request->date_naissance,
+            'ville_id' => $request->ville_id
+        ]);
+        return redirect()->route('etudiant.index', $newEtudiant->id)->withSuccess('Etudiant créé avec succès');
     }
 
     /**
@@ -40,6 +52,7 @@ class EtudiantController extends Controller
     public function show(Etudiant $etudiant)
     {
         //
+
     }
 
     /**
