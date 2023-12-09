@@ -21,4 +21,4 @@ Route::get('/',
 Route::get(
     '/etudiant',
     [App\Http\Controllers\EtudiantController::class, 'index']
-    )->name('etudiant.index');
+    );

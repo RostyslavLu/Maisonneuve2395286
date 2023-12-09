@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Etudiant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EtudiantController extends Controller
 {
@@ -13,7 +14,7 @@ class EtudiantController extends Controller
     public function index()
     {
         //
-        $etudiants = Etudiant::all();
+        $etudiants = Etudiant::select()->paginate(10);
         return view('etudiant.index', compact('etudiants'));
     }
 
