@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container mt-5">
-    <h1 class="text-center m-4">Modifier des données d'une étudiante </h1>
+    <h1 class="text-center m-4">Modifier des données d'un étudiant </h1>
     <form method="post">
         @method('PUT')
         @csrf

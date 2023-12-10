@@ -11,6 +11,7 @@
                 <th scope="col">Phone</th>
                 <th scope="col">Courriel</th>
                 <th scope="col">Ville</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,11 @@
         <td>{{ $etudiant->phone }}</td>
         <td>{{ $etudiant->email }}</td>
         <td>{{ $etudiant->etudiantHasVille?->nom }}</td>
+        <td>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="bi bi-trash"></i>
+            </button>
+        </td>
     </tr>
     
     @empty
@@ -29,6 +35,34 @@
     @endforelse
         </tbody>
     </table>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Confirmation de suppression
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Vous êtes sûr de vouloir supprimer cet étudiant?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Annuler
+                    </button>
+                    <form action="{{ route('etudiant.destroy', $etudiant->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Supprimer" class="btn btn-outline-danger">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="d-flex justify-content-center">
         {{ $etudiants->links() }}
     </div>
