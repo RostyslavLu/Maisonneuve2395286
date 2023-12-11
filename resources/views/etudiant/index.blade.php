@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
 
-<div class="container-lg mt-5">
+<div class="container mt-5">
     <table class="table table-hover">
         <thead>
             <tr>
