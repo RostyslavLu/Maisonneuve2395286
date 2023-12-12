@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
 
-<div class="container mt-5">
+<div class="container px-4 py-5">
     <table class="table table-hover">
         <thead>
             <tr>
@@ -15,6 +15,7 @@
             </tr>
         </thead>
         <tbody>
+
     @forelse($etudiants as $etudiant)
     <tr>
         <th scope="row">{{ $etudiant->id }}</th>
@@ -33,6 +34,7 @@
     @empty
     <div class="text-danger">Aucun étudiant disponible</div>
     @endforelse
+
         </tbody>
     </table>
 
@@ -56,7 +58,6 @@
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="Supprimer" class="btn btn-outline-danger">
-
                     </form>
                 </div>
             </div>
@@ -66,7 +67,5 @@
     <div class="d-flex justify-content-center">
         {{ $etudiants->links() }}
     </div>
-
-
 </div>
 @endsection

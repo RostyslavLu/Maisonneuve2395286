@@ -47,7 +47,7 @@
                 </select>
             </div>
         </div>
-        <div class="row mb-3">
+        <div class="col mb-3">
             <input type="submit" value="Modifier" class="btn btn-success">
         </div>
     </form>

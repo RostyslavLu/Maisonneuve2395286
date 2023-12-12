@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
 
-<div class="container mt-5">
+<div class="container px-4 py-5">
     <a href="{{ route('etudiant.index') }}" class="btn btn-outline-primary">Returner</a>
     <div class="row">
         <div class="col-12 pt-2">

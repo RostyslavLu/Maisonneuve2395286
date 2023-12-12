@@ -1,9 +1,9 @@
 @extends('layouts.layout')
 @section('content')
 
-<div class="container mt-5">
-    <h1 class="text-center m-4">Ajouter un étudiant</h1>
-    <form method="post">
+<div class="container px-4 py-5">
+    <h2 class="text-center m-4">Ajouter un étudiant</h2>
+    <form method="post" >
         @csrf
         <div class="row mb-3">
             <label for="nom" class="col-sm-2 col-form-label">Nom</label>
@@ -46,7 +46,7 @@
                 </select>
             </div>
         </div>
-        <div class="row mb-3">
+        <div class="col-12 mb-3">
             <input type="submit" value="Sauvegarder" class="btn btn-success">
         </div>
     </form>
