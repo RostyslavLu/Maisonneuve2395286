@@ -62,3 +62,28 @@ Route::get(
     '/registration',
     [App\Http\Controllers\CustomAuthController::class, 'create']
     )->name('registration');
+// route pour afficher les etudiants dans ordre decroissant par rapport à leur id
+Route::get(
+    '/etudiant-desc',
+    [App\Http\Controllers\EtudiantController::class, 'etudiantdesc']
+    )->name('etudiant.etudiantdesc');
+// route pour afficher les etudiants dans ordre decroissant par rapport à leur nom
+Route::get(
+    '/etudiant-nom-desc',
+    [App\Http\Controllers\EtudiantController::class, 'etudiantnomdesc']
+    )->name('etudiant.etudiantnomdesc');
+// route pour afficher les etudiants dans ordre croissant par rapport à leur nom
+Route::get(
+    '/etudiant-nom-asc',
+    [App\Http\Controllers\EtudiantController::class, 'etudiantnomasc']
+    )->name('etudiant.etudiantnomasc');
+// route pour afficher les etudiants dans ordre croissant par rapport à leur ville
+Route::get(
+    '/etudiant-ville-asc',
+    [App\Http\Controllers\EtudiantController::class, 'etudiantvilleasc']
+    )->name('etudiant.etudiantvilleasc');
+// route pour afficher les etudiants dans ordre decroissant par rapport à leur ville
+Route::get(
+    '/etudiant-ville-desc',
+    [App\Http\Controllers\EtudiantController::class, 'etudiantvilledesc']
+    )->name('etudiant.etudiantvilledesc');

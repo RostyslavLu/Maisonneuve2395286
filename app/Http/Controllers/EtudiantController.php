@@ -15,7 +15,13 @@ class EtudiantController extends Controller
     {
         //
         $etudiants = Etudiant::select()->paginate(15);
-        return view('etudiant.index', compact('etudiants'));
+        $urlid = "etudiant-desc";
+        $urlnom = "etudiant-nom-asc";
+        $urlville = "etudiant-ville-asc";
+        $icon_id = "bi bi-arrow-up-short";
+        $icon_nom = "";
+        $icon_ville = "";
+        return view('etudiant.index', compact('etudiants', 'urlid', 'urlnom', 'urlville', 'icon_id', 'icon_nom', 'icon_ville'));
     }
 
     /**
@@ -92,5 +98,60 @@ class EtudiantController extends Controller
         //
         $etudiant->delete();
         return redirect()->route('etudiant.index')->withSuccess('Etudiant supprimé avec succès');
+    }
+    public function etudiantdesc()
+    {
+        $etudiants = Etudiant::select()->orderby('id', 'desc')->paginate(15);
+        $urlid = "etudiant";
+        $urlnom = "etudiant-nom-desc";
+        $urlville = "etudiant-ville-asc";
+        $icon_id = "bi bi-arrow-down-short";
+        $icon_nom = "";
+        $icon_ville = "";
+        return view('etudiant.index', compact('etudiants', 'urlid', 'urlnom', 'urlville', 'icon_id', 'icon_nom', 'icon_ville'));
+    }
+    public function etudiantnomdesc()
+    {
+        $etudiants = Etudiant::select()->orderby('nom', 'desc')->paginate(15);
+        $urlid = "etudiant-desc";
+        $urlnom = "etudiant-nom-asc";
+        $urlville = "etudiant-ville-asc";
+        $icon_id = "";
+        $icon_nom = "bi bi-arrow-down-short";
+        $icon_ville = "";
+        return view('etudiant.index', compact('etudiants', 'urlnom', 'urlid', 'urlville', 'icon_id', 'icon_nom', 'icon_ville'));
+    }
+    public function etudiantnomasc()
+    {
+        $etudiants = Etudiant::select()->orderby('nom', 'asc')->paginate(15);
+        $urlid = "etudiant-desc";
+        $urlnom = "etudiant-nom-desc";
+        $urlville = "etudiant-ville-desc";
+        $icon_id = "";
+        $icon_nom = "bi bi-arrow-up-short";
+        $icon_ville = "";
+        return view('etudiant.index', compact('etudiants', 'urlnom', 'urlid', 'urlville', 'icon_id', 'icon_nom', 'icon_ville'));
+    }
+    public function etudiantvilleasc()
+    {
+        $etudiants = Etudiant::select()->orderby('ville_id', 'asc')->paginate(15);
+        $urlid = "etudiant-desc";
+        $urlnom = "etudiant-nom-desc";
+        $urlville = "etudiant-ville-desc";
+        $icon_id = "";
+        $icon_nom = "";
+        $icon_ville = "bi bi-arrow-up-short";
+        return view('etudiant.index', compact('etudiants', 'urlnom', 'urlid', 'urlville', 'icon_id', 'icon_nom', 'icon_ville'));
+    }
+    public function etudiantvilledesc()
+    {
+        $etudiants = Etudiant::select()->orderby('ville_id', 'desc')->paginate(15);
+        $urlid = "etudiant-desc";
+        $urlnom = "etudiant-nom-desc";
+        $urlville = "etudiant-ville-asc";
+        $icon_id = "";
+        $icon_nom = "";
+        $icon_ville = "bi bi-arrow-down-short";
+        return view('etudiant.index', compact('etudiants', 'urlnom', 'urlid', 'urlville', 'icon_id', 'icon_nom', 'icon_ville'));
     }
 }

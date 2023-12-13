@@ -6,12 +6,12 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nom</th>
+                    <th scope="col"><a href="/{{ $urlid }}">ID</a><i class="{{ $icon_id }}"></i></th>
+                    <th scope="col"><a href="/{{ $urlnom }}">Nom</a><i class="{{ $icon_nom }}"></i></th>
                     <th scope="col">Adresse</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Courriel</th>
-                    <th scope="col">Ville</th>
+                    <th scope="col"><a href="{{ $urlville }}">Ville</a><i class="{{ $icon_ville }}"></i></th>
                     <th></th>
                 </tr>
             </thead>
