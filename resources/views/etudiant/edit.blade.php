@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
 
-<div class="container mt-5">
+<main class="container mt-5 flex-fill">
     <h1 class="text-center m-4">Modifier des données d'un étudiant </h1>
     <form method="post">
         @method('PUT')
@@ -51,6 +51,6 @@
             <input type="submit" value="Modifier" class="btn btn-success">
         </div>
     </form>
-</div>
+</main>
 
 @endsection

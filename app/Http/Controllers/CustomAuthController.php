@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class CustomAuthController extends Controller
 {
@@ -13,6 +15,7 @@ class CustomAuthController extends Controller
     public function index()
     {
         //
+        return view('/auth/login');
     }
 
     /**
@@ -21,14 +24,33 @@ class CustomAuthController extends Controller
     public function create()
     {
         //
+        return view('auth.create');
     }
 
+    public function authentication(Request $request)
+    {
+        $request->validate([
+            'email' => 'email|required',
+            'password' => 'required|min:6|max:20',
+        ]);
+        
+    }
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'min:2 | max:45',
+            'email' => 'email|required|unique:users',
+            'password' => 'required|min:6|max:20',
+        ]);
+        $user = new User();
+        $user->fill($request->all());
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->route('login')->with('success', 'Votre compte a été créé avec succès. Veuillez vous connecter.');
     }
 
     /**

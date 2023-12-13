@@ -52,3 +52,13 @@ Route::delete(
     '/etudiant-delete/{etudiant}',
     [App\Http\Controllers\EtudiantController::class, 'destroy']
     )->name('etudiant.destroy');
+// route page pour se connecter
+Route::get(
+    '/login',
+    [App\Http\Controllers\CustomAuthController::class, 'index']
+    )->name('login');
+// route pour s'incrire
+Route::get(
+    '/registration',
+    [App\Http\Controllers\CustomAuthController::class, 'create']
+    )->name('registration');

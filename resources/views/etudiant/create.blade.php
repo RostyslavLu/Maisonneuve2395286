@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 @section('content')
 
-<div class="container px-4 py-5">
-    <h2 class="text-center m-4">Ajouter un étudiant</h2>
+<main class="container px-4 py-5 flex-fill">
+    <h1 class="h3 mb-3 fw-normal">Ajouter un étudiant</h1>
     <form method="post" >
         @csrf
         <div class="row mb-3">
@@ -50,6 +50,6 @@
             <input type="submit" value="Sauvegarder" class="btn btn-success">
         </div>
     </form>
-</div>
+</main>
 
 @endsection
