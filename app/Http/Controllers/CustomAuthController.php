@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Etudiant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\DB;
+
+//use Illuminate\Validation\Rules\Password;
 
 class CustomAuthController extends Controller
 {
@@ -24,14 +29,14 @@ class CustomAuthController extends Controller
     public function create()
     {
         //
-        return view('auth.create');
+        $villes = DB::table('villes')->select()->get();
+        return view('auth.create', compact('villes'));
     }
 
     public function authentication(Request $request)
     {
         $request->validate([
             'email' => 'email|required',
-            'password' => 'required|min:6|max:20',
         ]);
         
     }
@@ -44,13 +49,26 @@ class CustomAuthController extends Controller
         $request->validate([
             'name' => 'min:2 | max:45',
             'email' => 'email|required|unique:users',
-            'password' => 'required|min:6|max:20',
+            'password' => ['required', 'max:20'],
+            'adresse' => 'min:2 | max:100 | required',
+            'phone' => 'min:10 | max:20 | required',
+            'date_naissance' => 'required',
+            'ville_id' => 'required',
         ]);
-        $user = new User();
-        $user->fill($request->all());
-        $user->password = Hash::make($request->password);
-        $user->save();
-        return redirect()->route('login')->with('success', 'Votre compte a été créé avec succès. Veuillez vous connecter.');
+        $newUser = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make ( $request->password ),
+        ]);
+        $newEtudiant = Etudiant::create([
+            'adresse' => $request->adresse,
+            'phone' => $request->phone,
+            'date_naissance' => $request->date_naissance,
+            'ville_id' => $request->ville_id,
+            'user_id' => $newUser->id
+        ]);
+        
+        return redirect()->route('etudiant.show', $newEtudiant->id)->withSuccess('Etudiant créé avec succès');
     }
 
     /**
@@ -59,6 +77,7 @@ class CustomAuthController extends Controller
     public function show(User $user)
     {
         //
+        
     }
 
     /**

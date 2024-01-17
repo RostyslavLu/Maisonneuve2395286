@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Etudiant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class EtudiantController extends Controller
 {
@@ -15,6 +17,7 @@ class EtudiantController extends Controller
     {
         //
         $etudiants = Etudiant::select()->paginate(15);
+
         $urlid = "etudiant-desc";
         $urlnom = "etudiant-nom-asc";
         $urlville = "etudiant-ville-asc";
@@ -40,6 +43,22 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
+        // new code for tp2
+        // $newUser = User::create([
+        //     'name' => $request->nom,
+        //     'email' => $request->email,
+        //     'password' => $request->password,
+        // ]);
+        // $newEtudiant = Etudiant::create([
+        //     'nom' => $request->nom,
+        //     'adresse' => $request->adresse,
+        //     'phone' => $request->phone,
+        //     'email' => $request->email,
+        //     'date_naissance' => $request->date_naissance,
+        //     'ville_id' => $request->ville_id,
+        //     'user_id' => $newUser->id
+        // ]);
+        // return redirect()->route('etudiant.show', $newEtudiant->id)->withSuccess('Etudiant créé avec succès');
         //
         $newEtudiant = Etudiant::create([
             'nom' => $request->nom,
@@ -98,60 +117,5 @@ class EtudiantController extends Controller
         //
         $etudiant->delete();
         return redirect()->route('etudiant.index')->withSuccess('Etudiant supprimé avec succès');
-    }
-    public function etudiantdesc()
-    {
-        $etudiants = Etudiant::select()->orderby('id', 'desc')->paginate(15);
-        $urlid = "etudiant";
-        $urlnom = "etudiant-nom-desc";
-        $urlville = "etudiant-ville-asc";
-        $icon_id = "bi bi-arrow-down-short";
-        $icon_nom = "";
-        $icon_ville = "";
-        return view('etudiant.index', compact('etudiants', 'urlid', 'urlnom', 'urlville', 'icon_id', 'icon_nom', 'icon_ville'));
-    }
-    public function etudiantnomdesc()
-    {
-        $etudiants = Etudiant::select()->orderby('nom', 'desc')->paginate(15);
-        $urlid = "etudiant-desc";
-        $urlnom = "etudiant-nom-asc";
-        $urlville = "etudiant-ville-asc";
-        $icon_id = "";
-        $icon_nom = "bi bi-arrow-down-short";
-        $icon_ville = "";
-        return view('etudiant.index', compact('etudiants', 'urlnom', 'urlid', 'urlville', 'icon_id', 'icon_nom', 'icon_ville'));
-    }
-    public function etudiantnomasc()
-    {
-        $etudiants = Etudiant::select()->orderby('nom', 'asc')->paginate(15);
-        $urlid = "etudiant-desc";
-        $urlnom = "etudiant-nom-desc";
-        $urlville = "etudiant-ville-desc";
-        $icon_id = "";
-        $icon_nom = "bi bi-arrow-up-short";
-        $icon_ville = "";
-        return view('etudiant.index', compact('etudiants', 'urlnom', 'urlid', 'urlville', 'icon_id', 'icon_nom', 'icon_ville'));
-    }
-    public function etudiantvilleasc()
-    {
-        $etudiants = Etudiant::select()->orderby('ville_id', 'asc')->paginate(15);
-        $urlid = "etudiant-desc";
-        $urlnom = "etudiant-nom-desc";
-        $urlville = "etudiant-ville-desc";
-        $icon_id = "";
-        $icon_nom = "";
-        $icon_ville = "bi bi-arrow-up-short";
-        return view('etudiant.index', compact('etudiants', 'urlnom', 'urlid', 'urlville', 'icon_id', 'icon_nom', 'icon_ville'));
-    }
-    public function etudiantvilledesc()
-    {
-        $etudiants = Etudiant::select()->orderby('ville_id', 'desc')->paginate(15);
-        $urlid = "etudiant-desc";
-        $urlnom = "etudiant-nom-desc";
-        $urlville = "etudiant-ville-asc";
-        $icon_id = "";
-        $icon_nom = "";
-        $icon_ville = "bi bi-arrow-down-short";
-        return view('etudiant.index', compact('etudiants', 'urlnom', 'urlid', 'urlville', 'icon_id', 'icon_nom', 'icon_ville'));
     }
 }

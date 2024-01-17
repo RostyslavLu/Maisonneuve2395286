@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email', 100)->unique();
             $table->date('date_naissance');
             $table->integer('ville_id');
+            $table->integer('user_id');
             $table->timestamps();
             
         });

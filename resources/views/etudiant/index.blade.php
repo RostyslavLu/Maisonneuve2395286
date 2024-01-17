@@ -6,12 +6,12 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col"><a href="/{{ $urlid }}">ID</a><i class="{{ $icon_id }}"></i></th>
-                    <th scope="col"><a href="/{{ $urlnom }}">Nom</a><i class="{{ $icon_nom }}"></i></th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nom</th>
                     <th scope="col">Adresse</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Courriel</th>
-                    <th scope="col"><a href="{{ $urlville }}">Ville</a><i class="{{ $icon_ville }}"></i></th>
+                    <th scope="col">Ville</th>
                     <th></th>
                 </tr>
             </thead>
@@ -19,10 +19,10 @@
         @forelse($etudiants as $etudiant)
         <tr>
             <th scope="row">{{ $etudiant->id }}</th>
-            <td><a href="{{ route('etudiant.show', $etudiant->id) }}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-black">{{ $etudiant->nom }}</a></td>
+            <td><a href="{{ route('etudiant.show', $etudiant->id) }}" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-black">{{ $etudiant->etudiantHasUser?->name }}</a></td>
             <td>{{ $etudiant->adresse }}</td>
             <td>{{ $etudiant->phone }}</td>
-            <td>{{ $etudiant->email }}</td>
+            <td>{{ $etudiant->etudiantHasUser?->email }}</td>
             <td>{{ $etudiant->etudiantHasVille?->nom }}</td>
             <td>
                 <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
