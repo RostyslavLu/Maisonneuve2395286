@@ -38,7 +38,8 @@ class CustomAuthController extends Controller
         $request->validate([
             'email' => 'email|required',
         ]);
-        
+
+        return redirect()->route('etudiant.index');
     }
     /**
      * Store a newly created resource in storage.
@@ -47,28 +48,17 @@ class CustomAuthController extends Controller
     {
         //
         $request->validate([
-            'name' => 'min:2 | max:45',
-            'email' => 'email|required|unique:users',
-            'password' => ['required', 'max:20'],
-            'adresse' => 'min:2 | max:100 | required',
-            'phone' => 'min:10 | max:20 | required',
-            'date_naissance' => 'required',
-            'ville_id' => 'required',
+            'name' => 'required',
+            'email' => ['required', 'email', 'unique:users'],
+            //'password' => ['required', 'confirmed', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
+            'password' =>'required'
         ]);
         $newUser = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make ( $request->password ),
+            'password' => Hash::make($request->password),
         ]);
-        $newEtudiant = Etudiant::create([
-            'adresse' => $request->adresse,
-            'phone' => $request->phone,
-            'date_naissance' => $request->date_naissance,
-            'ville_id' => $request->ville_id,
-            'user_id' => $newUser->id
-        ]);
-        
-        return redirect()->route('etudiant.show', $newEtudiant->id)->withSuccess('Etudiant créé avec succès');
+        return redirect()->route('login')->with('success', 'Votre compte a été créé avec succès');
     }
 
     /**

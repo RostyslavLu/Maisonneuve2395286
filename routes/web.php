@@ -72,7 +72,7 @@ Route::post(
 Route::post(
     '/login',
     [App\Http\Controllers\CustomAuthController::class, 'authentication']
-    )->name('login.authentication');
+    )->name('authentication');
 // route pour se deconnecter
 Route::get(
     '/logout',
