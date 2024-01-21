@@ -43,33 +43,22 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
-        // new code for tp2
-        // $newUser = User::create([
-        //     'name' => $request->nom,
-        //     'email' => $request->email,
-        //     'password' => $request->password,
-        // ]);
-        // $newEtudiant = Etudiant::create([
-        //     'nom' => $request->nom,
-        //     'adresse' => $request->adresse,
-        //     'phone' => $request->phone,
-        //     'email' => $request->email,
-        //     'date_naissance' => $request->date_naissance,
-        //     'ville_id' => $request->ville_id,
-        //     'user_id' => $newUser->id
-        // ]);
-        // return redirect()->route('etudiant.show', $newEtudiant->id)->withSuccess('Etudiant créé avec succès');
-        //
+        $newUser = User::create([
+            'name' => $request->nom,
+            'email' => $request->email,
+            'password' => bcrypt('12345678'),
+        ]);
         $newEtudiant = Etudiant::create([
             'nom' => $request->nom,
             'adresse' => $request->adresse,
             'phone' => $request->phone,
             'email' => $request->email,
             'date_naissance' => $request->date_naissance,
-            'ville_id' => $request->ville_id
+            'ville_id' => $request->ville_id,
+            'user_id' => $newUser->id
         ]);
         return redirect()->route('etudiant.show', $newEtudiant->id)->withSuccess('Etudiant créé avec succès');
-    }
+            }
 
     /**
      * Display the specified resource.

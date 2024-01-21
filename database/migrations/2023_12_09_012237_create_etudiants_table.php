@@ -21,7 +21,6 @@ return new class extends Migration
             $table->integer('ville_id');
             $table->integer('user_id');
             $table->timestamps();
-            
         });
         Schema::table('etudiants', function (Blueprint $table) {
             $table->foreign('ville_id')->references('id')->on('villes');

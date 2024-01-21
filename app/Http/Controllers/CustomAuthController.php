@@ -37,7 +37,18 @@ class CustomAuthController extends Controller
     {
         $request->validate([
             'email' => 'email|required',
+            'password' => 'required'
         ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if(!Auth::validate($credentials)){
+            return back()->withErrors([
+                'email' => 'Les informations d\'identification fournies ne correspondent pas à nos enregistrements.'
+            ]);
+        }
+        $user = Auth::getProvider()->retrieveByCredentials($credentials);
+        Auth::login($user);
 
         return redirect()->route('etudiant.index');
     }
@@ -50,8 +61,7 @@ class CustomAuthController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => ['required', 'email', 'unique:users'],
-            //'password' => ['required', 'confirmed', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
-            'password' =>'required'
+            'password' => ['required', 'confirmed', Password::min(8)->letters()->mixedCase()->numbers()->symbols()]
         ]);
         $newUser = User::create([
             'name' => $request->name,
@@ -61,13 +71,15 @@ class CustomAuthController extends Controller
         return redirect()->route('login')->with('success', 'Votre compte a été créé avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
+    public function logout()
     {
-        //
-        
+        Auth::logout();
+        return redirect()->route('login');
+    }
+
+    public function dashboard()
+    {
+        return view('dashboard');
     }
 
     /**

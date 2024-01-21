@@ -9,7 +9,7 @@
           <p class="col-lg-10 fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. At rerum eum mollitia esse nulla id exercitationem excepturi impedit! Veritatis soluta architecto doloremque tenetur obcaecati a dolorem qui nihil tempore eaque.</p>
         </div>
         <div class="col-md-10 mx-auto col-lg-5">
-          <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+          <form action="{{ route('authentication') }}" method="post" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
             <div class="form-floating mb-3">
               <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
               <label for="floatingInput">Adresse courriel</label>
