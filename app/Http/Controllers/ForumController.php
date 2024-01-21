@@ -19,9 +19,11 @@ class ForumController extends Controller
         $categories = Category::withCount('forums')->get();
         return view('forum.index', compact('forums', 'categories'));
     }
-    public function general()
-    {
 
+   public function forum_1() {
+        $forums = Forum::where('category_id', 1)->get();
+        $category = Category::find(1);
+        return view('forum.forum_1', compact('forums', 'category'));
     }
 
     /**
@@ -68,6 +70,10 @@ class ForumController extends Controller
     public function show(Forum $forum)
     {
         //
+
+
+    //return $forum;
+        return view('forum.show', compact('forum'));
     }
 
     /**

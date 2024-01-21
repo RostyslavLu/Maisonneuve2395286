@@ -94,3 +94,12 @@ Route::post('/forum-create',
     [App\Http\Controllers\ForumController::class, 'store']
     )->name('forum.store');
 
+Route::get('/forum/{forum}',
+    [App\Http\Controllers\ForumController::class, 'show']
+    )->name('forum.show');
+
+Route::get('/forum_1',
+    [App\Http\Controllers\ForumController::class, 'forum_1']
+    )->name('forum_1');
+
+
