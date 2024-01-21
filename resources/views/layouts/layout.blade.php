@@ -28,17 +28,21 @@
   <header class="p-4 text-bg-primary">
     <div class="container">
         <div class="container d-flex flex-wrap justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <i class="bi bi-house"></i>
-          </a>
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="/" class="nav-link px-2 text-white">Accueil</a></li>
             <li class="nav-item dropdown"><a href="/" class="nav-link px-2 text-white dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Étudiants</a>
               <ul class="dropdown-menu">
                   <li><a href="/etudiant" class="dropdown-item">Liste des étudiants</a></li>
                   <li><a href="/etudiant-create" class="dropdown-item">Ajouter un étudiant</a></li>
               </ul>
             </li>
+            <li class="nav-item dropdown"><a href="/" class="nav-link px-2 text-white dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Forums</a>
+              <ul class="dropdown-menu">
+                  <li><a href="/forum" class="dropdown-item">Liste des forums</a></li>
+                  <li><a href="/forum-create" class="dropdown-item">Ajouter un forum</a></li>
+              </ul>
           </ul>
+
           <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
               <input type="search" class="form-control form-control-light " placeholder="Rechercher..."
                   aria-label="Search">

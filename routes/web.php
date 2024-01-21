@@ -87,4 +87,10 @@ Route::get(
     '/forum',
     [App\Http\Controllers\ForumController::class, 'index']
     )->name('forum.index');
+Route::get('/forum-create',
+    [App\Http\Controllers\ForumController::class, 'create']
+    )->name('forum.create');
+Route::post('/forum-create',
+    [App\Http\Controllers\ForumController::class, 'store']
+    )->name('forum.store');
 

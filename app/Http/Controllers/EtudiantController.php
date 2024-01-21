@@ -43,6 +43,15 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nom' => 'required',
+            'adresse' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'date_naissance' => 'required',
+            'ville_id' => 'required'
+        ]);
+
         $newUser = User::create([
             'name' => $request->nom,
             'email' => $request->email,
@@ -58,7 +67,7 @@ class EtudiantController extends Controller
             'user_id' => $newUser->id
         ]);
         return redirect()->route('etudiant.show', $newEtudiant->id)->withSuccess('Etudiant créé avec succès');
-            }
+    }
 
     /**
      * Display the specified resource.

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Forum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 
 class ForumController extends Controller
 {
@@ -14,7 +16,12 @@ class ForumController extends Controller
     {
         //
         $forums = Forum::all();
-        return view('forum.index', compact('forums'));
+        $categories = Category::withCount('forums')->get();
+        return view('forum.index', compact('forums', 'categories'));
+    }
+    public function general()
+    {
+
     }
 
     /**
@@ -23,7 +30,9 @@ class ForumController extends Controller
     public function create()
     {
         //
-        return view('forum.create');
+        $user = Auth::user();
+        $categories = Category::all();
+        return view('forum.create', compact('user', 'categories'));
     }
 
     /**
@@ -32,6 +41,25 @@ class ForumController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'titre' => 'required',
+            'titre_en' => 'required',
+            'message' => 'required',
+            'message_en' => 'required',
+            'category_id' => 'required'
+        ]);
+        $user = Auth::user();
+
+        $forum = Forum::create([
+            'titre' => $request->titre,
+            'titre_en' => $request->titre_en,
+            'message' => $request->message,
+            'message_en' => $request->message_en,
+            'user_id' => $user->id,
+            'category_id' => $request->category_id
+        ]);
+        //return $forum;
+        return redirect()->route('forum.index')->with('success', 'Forum créé avec succès');
     }
 
     /**
