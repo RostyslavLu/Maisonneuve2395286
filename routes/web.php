@@ -78,5 +78,10 @@ Route::get(
     '/logout',
     [App\Http\Controllers\CustomAuthController::class, 'logout']
     )->name('logout');
+// route pour afficher la page de profil
+Route::get(
+    '/dashboard',
+    [App\Http\Controllers\CustomAuthController::class, 'dashboard']
+    )->name('dashboard');
 
-    
+

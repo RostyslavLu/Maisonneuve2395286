@@ -50,7 +50,7 @@ class CustomAuthController extends Controller
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
         Auth::login($user);
 
-        return redirect()->route('etudiant.index');
+        return redirect()->route('dashboard');
     }
     /**
      * Store a newly created resource in storage.
@@ -77,9 +77,18 @@ class CustomAuthController extends Controller
         return redirect()->route('login');
     }
 
-    public function dashboard()
+    public function dashboard(Etudiant $etudiant)
     {
-        return view('dashboard');
+        $id = Auth::user()->id;
+        $etudiant = Etudiant::select()->where('user_id', $id)->first();
+        $user = User::select()->where('id', $id)->first();
+        $user->address = $etudiant->adresse;
+        $user->phone = $etudiant->phone;
+        $user->date_naissance = $etudiant->date_naissance;
+        $ville = DB::table('villes')->select()->where('id', $etudiant->ville_id)->first();
+        $user->ville = $ville->nom;
+
+        return view('auth.dashboard', compact('user'));
     }
 
     /**

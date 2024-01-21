@@ -3,9 +3,9 @@
 
 <main class="form-signin w-100 m-auto">
 
-        <form action="{{ route('authentication') }}" method="post" class="">
+        <form action="{{ route('authentication') }}" method="post" style="min-width: 25rem">
           @csrf
-            <h1 class="h3 mb-3 fw-normal">Veuillez se connecter</h1>
+            <h1 class="h3 mb-3 fw-normal text-center">Veuillez se connecter</h1>
           <div class="form-floating ">
             <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" value="{{ old('email') }}">
             <label for="floatingInput">Adresse courriel</label>
