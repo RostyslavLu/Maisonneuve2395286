@@ -83,5 +83,8 @@ Route::get(
     '/dashboard',
     [App\Http\Controllers\CustomAuthController::class, 'dashboard']
     )->name('dashboard');
-
+Route::get(
+    '/forum',
+    [App\Http\Controllers\ForumController::class, 'index']
+    )->name('forum.index');
 

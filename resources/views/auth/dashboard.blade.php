@@ -9,11 +9,11 @@
             <div class="col">
                 <h2 class="col-lg-10 fs-4">Informations personnelles</h2>
                 <ul class="list-group">
-                    <li class="list-group-item">{{ $user->email }}</li>
-                    <li class="list-group-item">{{ $user->address }}</li>
-                    <li class="list-group-item">{{ $user->phone }}</li>
-                    <li class="list-group-item">{{ $user->date_naissance }}</li>
-                    <li class="list-group-item">{{ $user->ville }}</li>
+                    <li class="list-group-item"><strong>Courriel:</strong>&nbsp;{{ $user->email }}</li>
+                    <li class="list-group-item"><strong>Adresse:</strong>&nbsp;{{ $user->address }}</li>
+                    <li class="list-group-item"><strong>Téléphone:</strong>&nbsp;{{ $user->phone }}</li>
+                    <li class="list-group-item"><strong>Date de naissance:</strong>&nbsp;{{ $user->date_naissance }}</li>
+                    <li class="list-group-item"><strong>Ville:</strong>&nbsp;{{ $user->ville }}</li>
                 </ul>
             </div>
             <div class="col">

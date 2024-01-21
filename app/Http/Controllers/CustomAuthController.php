@@ -81,12 +81,20 @@ class CustomAuthController extends Controller
     {
         $id = Auth::user()->id;
         $etudiant = Etudiant::select()->where('user_id', $id)->first();
-        $user = User::select()->where('id', $id)->first();
-        $user->address = $etudiant->adresse;
-        $user->phone = $etudiant->phone;
-        $user->date_naissance = $etudiant->date_naissance;
-        $ville = DB::table('villes')->select()->where('id', $etudiant->ville_id)->first();
-        $user->ville = $ville->nom;
+        if(!$etudiant){
+            $user = User::select()->where('id', $id)->first();
+            $user->address = 'Non renseigné';
+            $user->phone = 'Non renseigné';
+            $user->date_naissance = 'Non renseigné';
+        } else {
+            $user = User::select()->where('id', $id)->first();
+            $user->address = $etudiant->adresse;
+            $user->phone = $etudiant->phone;
+            $user->date_naissance = $etudiant->date_naissance;
+            $ville = DB::table('villes')->select()->where('id', $etudiant->ville_id)->first();
+            $user->ville = $ville->nom;
+        }
+
 
         return view('auth.dashboard', compact('user'));
     }
