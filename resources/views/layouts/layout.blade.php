@@ -46,12 +46,11 @@
           <div class="text-end">
             @guest
                 <a href="/login" class="btn btn-outline-light me-2">Se connecter</a>
+                <a href="/registration" class="btn btn-warning">S'inscrire</a>
             @else
                 <a href="/dashboard" class="btn btn-outline-light me-2">Mon compte</a>
                 <a href="/logout" class="btn btn-outline-light me-2">Se déconnecter</a>
             @endguest
-
-            <a href="/registration" class="btn btn-warning">S'inscrire</a>
           </div>
         </div>
     </div>
