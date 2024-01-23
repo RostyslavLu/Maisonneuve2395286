@@ -81,6 +81,9 @@ class CustomAuthController extends Controller
     {
         $id = Auth::user()->id;
         $etudiant = Etudiant::select()->where('user_id', $id)->first();
+
+        $forums = DB::table('forums')->select()->where('user_id', $id)->get();
+
         if(!$etudiant){
             $user = User::select()->where('id', $id)->first();
             $user->address = 'Non renseigné';
@@ -96,7 +99,7 @@ class CustomAuthController extends Controller
         }
 
 
-        return view('auth.dashboard', compact('user'));
+        return view('auth.dashboard', compact('user', 'forums'));
     }
 
     /**

@@ -20,10 +20,35 @@ class ForumController extends Controller
         return view('forum.index', compact('forums', 'categories'));
     }
 
-   public function forum_1() {
+    public function forum_1()
+    {
         $forums = Forum::where('category_id', 1)->get();
         $category = Category::find(1);
         return view('forum.forum_1', compact('forums', 'category'));
+    }
+    public function forum_2()
+    {
+        $forums = Forum::where('category_id', 2)->get();
+        $category = Category::find(2);
+        return view('forum.forum_2', compact('forums', 'category'));
+    }
+    public function forum_3()
+    {
+        $forums = Forum::where('category_id', 3)->get();
+        $category = Category::find(3);
+        return view('forum.forum_3', compact('forums', 'category'));
+    }
+    public function forum_4()
+    {
+        $forums = Forum::where('category_id', 4)->get();
+        $category = Category::find(4);
+        return view('forum.forum_4', compact('forums', 'category'));
+    }
+    public function forum_5()
+    {
+        $forums = Forum::where('category_id', 5)->get();
+        $category = Category::find(5);
+        return view('forum.forum_5', compact('forums', 'category'));
     }
 
     /**
@@ -106,7 +131,6 @@ class ForumController extends Controller
             'category_id' => $request->category_id
         ]);
         return redirect()->route('forum.index')->with('success', 'Forum modifié avec succès');
-
     }
 
     /**
@@ -115,5 +139,7 @@ class ForumController extends Controller
     public function destroy(Forum $forum)
     {
         //
+        $forum->delete();
+        return redirect()->route('forum.index')->with('success', 'Forum supprimé avec succès');
     }
 }

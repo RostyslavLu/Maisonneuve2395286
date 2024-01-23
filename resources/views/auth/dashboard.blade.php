@@ -17,6 +17,7 @@
                 </ul>
             </div>
             <div class="col">
+                {{ $forums }}
             </div>
         </div>
     </main>
