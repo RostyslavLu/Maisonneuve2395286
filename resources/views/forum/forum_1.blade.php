@@ -12,7 +12,8 @@
     <ul class="list-group">
     @forelse ($forums as $forum)
     <li class="list-group-item d-flex justify-content-between align-items-center">
-        <a href="/forum/{{$forum->id}}" class="btn btn-link">{{ $forum->titre }}</a>
+        <a href="/forum/{{$forum->id}}" class="btn btn-link"><strong>{{ $forum->titre }}</strong></a>
+        <span class="badge text-bg-secondary">Author:&nbsp;{{ $forum->forumHasUser?->name }}</span
     </li>
     @empty
     <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -22,6 +23,9 @@
     </ul>
     <div class="d-flex justify-content-end mt-3">
         <a href="/forum-create" class="btn btn-primary">Créer un forum</a>
+    </div>
+    <div class="d-flex justify-content-center">
+        {{ $forums->links() }}
     </div>
 </main>
 

@@ -17,8 +17,20 @@
                 </ul>
             </div>
             <div class="col">
-                {{ $forums }}
+                <h2 class="col-lg-10 fs-4">Forums créer par utilisateur</h2>
+                <div class="d-flex justify-content-end mt-3">
+                    <ul>
+                        @forelse($forums as $forum)
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <a href="/forum/{{ $forum->id }}" class="btn btn-link">{{ $forum->titre }}</a>
+                            </li>
+                        @empty
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p>Aucun forum créer par cet utilisateur</p>
+                            </li>
+                        @endforelse
+                    </ul>
+                </div>
             </div>
-        </div>
     </main>
 @endsection

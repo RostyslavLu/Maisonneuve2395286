@@ -22,31 +22,31 @@ class ForumController extends Controller
 
     public function forum_1()
     {
-        $forums = Forum::where('category_id', 1)->get();
+        $forums = Forum::where('category_id', 1)->paginate(10);
         $category = Category::find(1);
         return view('forum.forum_1', compact('forums', 'category'));
     }
     public function forum_2()
     {
-        $forums = Forum::where('category_id', 2)->get();
+        $forums = Forum::where('category_id', 2)->paginate(10);
         $category = Category::find(2);
         return view('forum.forum_2', compact('forums', 'category'));
     }
     public function forum_3()
     {
-        $forums = Forum::where('category_id', 3)->get();
+        $forums = Forum::where('category_id', 3)->paginate(10);
         $category = Category::find(3);
         return view('forum.forum_3', compact('forums', 'category'));
     }
     public function forum_4()
     {
-        $forums = Forum::where('category_id', 4)->get();
+        $forums = Forum::where('category_id', 4)->paginate(10);
         $category = Category::find(4);
         return view('forum.forum_4', compact('forums', 'category'));
     }
     public function forum_5()
     {
-        $forums = Forum::where('category_id', 5)->get();
+        $forums = Forum::where('category_id', 5)->paginate(10);
         $category = Category::find(5);
         return view('forum.forum_5', compact('forums', 'category'));
     }
