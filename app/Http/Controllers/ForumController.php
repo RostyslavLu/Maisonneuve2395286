@@ -70,9 +70,6 @@ class ForumController extends Controller
     public function show(Forum $forum)
     {
         //
-
-
-    //return $forum;
         return view('forum.show', compact('forum'));
     }
 
@@ -82,6 +79,9 @@ class ForumController extends Controller
     public function edit(Forum $forum)
     {
         //
+        $user = Auth::user();
+        $categories = Category::all();
+        return view('forum.edit', compact('forum', 'categories', 'user'));
     }
 
     /**
@@ -90,6 +90,23 @@ class ForumController extends Controller
     public function update(Request $request, Forum $forum)
     {
         //
+        $request->validate([
+            'titre' => 'required',
+            'titre_en' => 'required',
+            'message' => 'required',
+            'message_en' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        $forum->update([
+            'titre' => $request->titre,
+            'titre_en' => $request->titre_en,
+            'message' => $request->message,
+            'message_en' => $request->message_en,
+            'category_id' => $request->category_id
+        ]);
+        return redirect()->route('forum.index')->with('success', 'Forum modifié avec succès');
+
     }
 
     /**

@@ -17,7 +17,7 @@
     @endforeach
     </ul>
     <div class="d-flex justify-content-end mt-3">
-        <a href="/forum/create" class="btn btn-primary">Créer un forum</a>
+        <a href="/forum-create" class="btn btn-primary">Créer un forum</a>
     </div>
 </main>
 

@@ -94,6 +94,13 @@ Route::post('/forum-create',
     [App\Http\Controllers\ForumController::class, 'store']
     )->name('forum.store');
 
+Route::get('/forum-edit/{forum}',
+    [App\Http\Controllers\ForumController::class, 'edit']
+    )->name('forum.edit');
+    Route::put('/forum-edit/{forum}',
+[App\Http\Controllers\ForumController::class, 'update']
+    )->name('forum.edit');
+
 Route::get('/forum/{forum}',
     [App\Http\Controllers\ForumController::class, 'show']
     )->name('forum.show');
@@ -101,5 +108,4 @@ Route::get('/forum/{forum}',
 Route::get('/forum_1',
     [App\Http\Controllers\ForumController::class, 'forum_1']
     )->name('forum_1');
-
 
