@@ -82,7 +82,7 @@ class CustomAuthController extends Controller
         $id = Auth::user()->id;
         $etudiant = Etudiant::select()->where('user_id', $id)->first();
 
-        $forums = DB::table('forums')->select()->where('user_id', $id)->get();
+        $forums = DB::table('forums')->select()->where('user_id', $id)->paginate(5);
 
         if(!$etudiant){
             $user = User::select()->where('id', $id)->first();

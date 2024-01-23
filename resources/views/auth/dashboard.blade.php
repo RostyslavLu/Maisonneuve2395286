@@ -9,6 +9,7 @@
             <div class="col">
                 <h2 class="col-lg-10 fs-4">Informations personnelles</h2>
                 <ul class="list-group">
+                    <li class="list-group-item"><strong>Nom:</strong>&nbsp;{{ $user->name }}</li>
                     <li class="list-group-item"><strong>Courriel:</strong>&nbsp;{{ $user->email }}</li>
                     <li class="list-group-item"><strong>Adresse:</strong>&nbsp;{{ $user->address }}</li>
                     <li class="list-group-item"><strong>Téléphone:</strong>&nbsp;{{ $user->phone }}</li>
@@ -18,11 +19,19 @@
             </div>
             <div class="col">
                 <h2 class="col-lg-10 fs-4">Forums créer par utilisateur</h2>
-                <div class="d-flex justify-content-end mt-3">
-                    <ul>
+
+                    <ul class="list-group">
                         @forelse($forums as $forum)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <a href="/forum/{{ $forum->id }}" class="btn btn-link">{{ $forum->titre }}</a>
+                            <li class="list-group-item d-flex align-items-center gap-1">
+                                <a href="/forum/{{ $forum->id }}" class="btn btn-link text-start flex-grow-1">{{ $forum->titre }}</a>
+                                <div class="d-flex justify-content-end">
+                                    <a href="/forum-edit/{{$forum->id}}" class="btn btn-primary">Modifier</a>
+                                </div>
+                                <form action="/forum-delete/{{$forum->id}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger">Supprimer</button>
+                                </form>
                             </li>
                         @empty
                             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -30,7 +39,10 @@
                             </li>
                         @endforelse
                     </ul>
-                </div>
+                    <div class="d-flex justify-content-center">
+                        {{ $forums->links() }}
+                    </div>
+
             </div>
     </main>
 @endsection

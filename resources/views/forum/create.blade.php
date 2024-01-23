@@ -33,7 +33,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" name="message" id="message" rows="3" placeholder="Votre message"></textarea>
+                    <textarea class="form-control" name="message" id="message" rows="8" placeholder="Votre message"></textarea>
                   </div>
             </div>
             <div class="col">
@@ -43,7 +43,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" name="message_en" id="message" rows="3" placeholder="Your message"></textarea>
+                    <textarea class="form-control" name="message_en" id="message" rows="8" placeholder="Your message"></textarea>
                   </div>
             </div>
         </div>

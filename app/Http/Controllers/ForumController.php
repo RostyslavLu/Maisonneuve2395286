@@ -85,7 +85,6 @@ class ForumController extends Controller
             'user_id' => $user->id,
             'category_id' => $request->category_id
         ]);
-        //return $forum;
         return redirect()->route('forum.index')->with('success', 'Forum créé avec succès');
     }
 
