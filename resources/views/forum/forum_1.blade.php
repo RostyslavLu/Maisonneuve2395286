@@ -13,7 +13,7 @@
     @forelse ($forums as $forum)
     <li class="list-group-item d-flex justify-content-between align-items-center">
         <a href="/forum/{{$forum->id}}" class="btn btn-link"><strong>{{ $forum->titre }}</strong></a>
-        <span class="badge text-bg-secondary">Author:&nbsp;{{ $forum->forumHasUser?->name }}</span
+        <span class="badge text-bg-secondary">Author:&nbsp;{{ $forum->forumHasUser?->name }}</span>
     </li>
     @empty
     <li class="list-group-item d-flex justify-content-between align-items-center">

@@ -16,9 +16,11 @@
             </div>
         </div>
     </div>
+    @if(Auth::check() && Auth::user()->id == $forum->user_id)
     <div class="d-flex justify-content-end mt-3">
         <a href="/forum-edit/{{$forum->id}}" class="btn btn-primary">Modifier</a>
     </div>
+
     <div class="d-flex justify-content-end mt-3">
         <form action="/forum-delete/{{$forum->id}}" method="post">
             @csrf
@@ -26,7 +28,7 @@
             <button class="btn btn-danger">Supprimer</button>
         </form>
     </div>
-
+    @endif
 </main>
 
 @endsection

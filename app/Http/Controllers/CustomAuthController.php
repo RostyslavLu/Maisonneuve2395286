@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 //use Illuminate\Validation\Rules\Password;
 
@@ -49,7 +51,11 @@ class CustomAuthController extends Controller
         }
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
         Auth::login($user);
-
+        if ($user->role == 1) {
+            $user->assignRole('Admin');
+        } elseif ($user->role == 2) {
+            $user->assignRole('Editor');
+        }
         return redirect()->route('dashboard');
     }
     /**

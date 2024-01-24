@@ -104,6 +104,9 @@ class ForumController extends Controller
     {
         //
         $user = Auth::user();
+        if (!$user===$forum->user_id) {
+            return redirect()->route('forum.index')->with('error', 'Vous n\'avez pas les droits pour modifier ce forum');
+        }
         $categories = Category::all();
         return view('forum.edit', compact('forum', 'categories', 'user'));
     }
