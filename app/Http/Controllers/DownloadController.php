@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Download;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DownloadController extends Controller
 {
@@ -13,6 +14,8 @@ class DownloadController extends Controller
     public function index()
     {
         //
+        $files = Download::paginate(10);
+        return view('download.index', compact('files'));
     }
 
     /**
@@ -21,6 +24,7 @@ class DownloadController extends Controller
     public function create()
     {
         //
+        return view('download.create');
     }
 
     /**
@@ -29,6 +33,20 @@ class DownloadController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required',
+            'file' => 'required|mimes:pdf,doc,zip|max:2048',
+        ]);
+        $file = $request->file('file');
+        $name = $request->name . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('files'), $name);
+        $form_data = array(
+            'name' => $request->name,
+            'file' => $name,
+            'user_id' => Auth::id(),
+        );
+        Download::create($form_data);
+        return redirect()->route('download.index')->with('success', 'File added successfully.');
     }
 
     /**
@@ -61,5 +79,10 @@ class DownloadController extends Controller
     public function destroy(Download $download)
     {
         //
+    }
+    public function download($file)
+    {
+        $loadfile = Download::where('id', $file)->firstOrFail();
+        return response()->download(public_path('files/' . $loadfile->file));
     }
 }

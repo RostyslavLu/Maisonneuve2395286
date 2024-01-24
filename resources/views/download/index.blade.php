@@ -14,7 +14,7 @@
                 <th>Nom</th>
                 <th>Créé le</th>
                 <th>Modifié le</th>
-                <th>Taille</th>
+                <th>Author</th>
                 <th>Télécharger</th>
             </tr>
         </thead>
@@ -24,7 +24,7 @@
                 <td>{{ $file->name }}</td>
                 <td>{{ $file->created_at }}</td>
                 <td>{{ $file->updated_at }}</td>
-                <td>{{ $file->size }}</td>
+                <td>{{ $file->downloadHasUser?->name }}</td>
                 <td><a href="/download-file/{{ $file->id }}" class="btn btn-primary">Télécharger</a></td>
             </tr>
             @empty
@@ -34,12 +34,10 @@
             @endforelse
         </tbody>
     </table>
+    {{ $files->links() }}
     <div class="d-flex justify-content-end mt-3">
         <a href="/download-create" class="btn btn-primary">Ajouter un fichier</a>
     </div>
-
-
-
 </main>
 
 @endsection

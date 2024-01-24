@@ -135,3 +135,15 @@ Route::get('/forum_5',
 Route::get('/download',
     [App\Http\Controllers\DownloadController::class, 'index']
     )->name('download.index')->middleware('auth');
+Route::get('/download-create',
+    [App\Http\Controllers\DownloadController::class, 'create']
+    )->name('download.create')->middleware('auth');
+Route::post('/download-create',
+    [App\Http\Controllers\DownloadController::class, 'store']
+    )->name('download.store')->middleware('auth');
+Route::delete('/download-delete/{download}',
+    [App\Http\Controllers\DownloadController::class, 'destroy']
+    )->name('download.destroy');
+Route::get('/download-file/{download}',
+    [App\Http\Controllers\DownloadController::class, 'download']
+    )->name('download.download')->middleware('auth');

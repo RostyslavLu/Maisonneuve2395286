@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
     <main class="container col-xl-10 col-xxl-8 px-4 py-5 flex-fill">
-        <div class="">
+        <div >
             <h1 class="col-lg-10 fs-4">Bonjour&nbsp;{{ $user->name }}</h1>
         </div>
         <hr>
@@ -44,5 +44,35 @@
                     </div>
 
             </div>
+        </div>
+        <div class="d-flex justify-content-end mt-3">
+            <h2 class="col-lg-10 fs-4">Fichiers</h2>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Créé le</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            @forelse ($files as $file)
+                <tr>
+                    <td>{{ $file->name }}</td>
+                    <td>{{ $file->created_at }}</td>
+                </tr>
+            @empty
+                <div class="alert alert-danger">
+                    <p>Aucun fichier</p>
+                </div>
+            @endforelse
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-end mt-3">
+            <a href="/download-create" class="btn btn-primary">Ajouter un fichier</a>
+        </div>
+
+
     </main>
 @endsection

@@ -89,6 +89,7 @@ class CustomAuthController extends Controller
         $etudiant = Etudiant::select()->where('user_id', $id)->first();
 
         $forums = DB::table('forums')->select()->where('user_id', $id)->paginate(5);
+        $files = DB::table('downloads')->select()->where('user_id', $id)->paginate(5);
 
         if(!$etudiant){
             $user = User::select()->where('id', $id)->first();
@@ -105,7 +106,7 @@ class CustomAuthController extends Controller
         }
 
 
-        return view('auth.dashboard', compact('user', 'forums'));
+        return view('auth.dashboard', compact('user', 'forums', 'files'));
     }
 
     /**
