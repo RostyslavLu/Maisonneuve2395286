@@ -12,7 +12,7 @@
     @foreach ($categories as $category)
     <li class="list-group-item d-flex justify-content-between align-items-center">
         <a href="/forum_{{$category->id}}" class="btn btn-link text-lg">{{ $category->name }}</a>
-        <span class="badge bg-primary rounded-pill">{{ $category->forums_count }}</span>
+        <span class="badge bg-primary rounded-pill">{{ $category->forums_count }}&nbsp;@lang('lang.messages_in_category')</span>
     </li>
     @endforeach
     </ul>

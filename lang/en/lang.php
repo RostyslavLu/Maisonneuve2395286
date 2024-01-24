@@ -83,4 +83,5 @@ return [
     'btn_download_file' => 'Download',
     'btn_download_delete' => 'Delete',
     'download_not_found' => 'No file found',
+    'messages_in_category' => 'Messages in category',
 ];

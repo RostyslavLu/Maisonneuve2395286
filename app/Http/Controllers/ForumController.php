@@ -16,40 +16,47 @@ class ForumController extends Controller
     {
         //
         $forums = Forum::all();
-        // $categories = Category::withCount('forums')->get();
-        $category = new Category();
-        $categories = $category->categorySelect();
+        //$categories = Category::withCount('forums')->get();
+        $cat = new Category();
+        $categories = $cat->categorySelect();
+        $categories->loadCount('forums');
         return view('forum.index', compact('forums', 'categories'));
     }
 
     public function forum_1()
     {
         $forums = Forum::where('category_id', 1)->paginate(10);
-        $category = Category::find(1);
+
+        $cat =new Category();
+        $category = $cat->categorySelect()->find(1);
         return view('forum.forum_1', compact('forums', 'category'));
     }
     public function forum_2()
     {
         $forums = Forum::where('category_id', 2)->paginate(10);
-        $category = Category::find(2);
+        $cat = new Category();
+        $category = $cat->categorySelect()->find(2);
         return view('forum.forum_2', compact('forums', 'category'));
     }
     public function forum_3()
     {
         $forums = Forum::where('category_id', 3)->paginate(10);
-        $category = Category::find(3);
+        $cat =new Category();
+        $category = $cat->categorySelect()->find(3);
         return view('forum.forum_3', compact('forums', 'category'));
     }
     public function forum_4()
     {
         $forums = Forum::where('category_id', 4)->paginate(10);
-        $category = Category::find(4);
+        $cat = new Category();
+        $category = $cat->categorySelect()->find(4);
         return view('forum.forum_4', compact('forums', 'category'));
     }
     public function forum_5()
     {
         $forums = Forum::where('category_id', 5)->paginate(10);
-        $category = Category::find(5);
+        $cat = new Category();
+        $category = $cat->categorySelect()->find(5);
         return view('forum.forum_5', compact('forums', 'category'));
     }
 

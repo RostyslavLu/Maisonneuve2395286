@@ -82,4 +82,5 @@ return [
     'btn_download_file' => 'Télécharger',
     'btn_download_delete' => 'Supprimer',
     'download_not_found' => 'Aucun fichier trouvé',
+    'messages_in_category' => 'Messages dans la catégorie',
 ];
