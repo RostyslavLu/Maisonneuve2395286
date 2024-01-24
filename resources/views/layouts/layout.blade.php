@@ -32,8 +32,8 @@
         <div class="container d-flex flex-wrap justify-content-lg-start">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link px-2 text-white">Accueil</a></li>
-            @if (Auth::user()->role == 'admin')
-            <li class="nav-item dropdown"><a href="/" class="nav-link px-2 text-white dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Étudiants</a>
+            @if (Auth::check() && Auth::user()->role == 'admin')
+            <li class="nav-item dropdown"><a href="#" class="nav-link px-2 text-white dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Étudiants</a>
               <ul class="dropdown-menu">
                   <li><a href="/etudiant" class="dropdown-item">Liste des étudiants</a></li>
                   <li><a href="/etudiant-create" class="dropdown-item">Ajouter un étudiant</a></li>
@@ -54,10 +54,9 @@
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="/lang/fr"><i class="flag flag-france"></i><span>FR</span></a></li>
                 <li><a class="dropdown-item" href="/lang/en"><i class="flag flag-united-kingdom"></i><span>EN</span></a></li>
-
               </ul>
+            </div>
           </ul>
-
           <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
               <input type="search" class="form-control form-control-light " placeholder="Rechercher..."
                   aria-label="Search">
