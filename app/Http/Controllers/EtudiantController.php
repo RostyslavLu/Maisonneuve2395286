@@ -58,10 +58,8 @@ class EtudiantController extends Controller
             'password' => bcrypt('12345678'),
         ]);
         $newEtudiant = Etudiant::create([
-            'nom' => $request->nom,
             'adresse' => $request->adresse,
             'phone' => $request->phone,
-            'email' => $request->email,
             'date_naissance' => $request->date_naissance,
             'ville_id' => $request->ville_id,
             'user_id' => $newUser->id
@@ -97,12 +95,14 @@ class EtudiantController extends Controller
     {
         //
         $etudiant->update([
-            'nom' => $request->nom,
             'adresse' => $request->adresse,
             'phone' => $request->phone,
-            'email' => $request->email,
             'date_naissance' => $request->date_naissance,
             'ville_id' => $request->ville_id
+        ]);
+        User::where('id', $etudiant->user_id)->update([
+            'name' => $request->nom,
+            'email' => $request->email
         ]);
         return redirect()->route('etudiant.show', $etudiant->id)->withSuccess('Etudiant modifié avec succès');
     }
