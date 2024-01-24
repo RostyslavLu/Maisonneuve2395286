@@ -2,16 +2,16 @@
 @section('content')
 
 <main class="container px-4 py-5 flex-fill">
-    <h1 class="h3 mb-3 fw-normal">Liste des étudiants</h1>
+    <h1 class="h3 mb-3 fw-normal">@lang('lang.btn_student_list')</h1>
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Adresse</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Courriel</th>
-                    <th scope="col">Ville</th>
+                    <th scope="col">@lang('lang.table_student_name')</th>
+                    <th scope="col">@lang('lang.table_student_address')</th>
+                    <th scope="col">@lang('lang.table_student_email')</th>
+                    <th scope="col">@lang('lang.table_student_phone')</th>
+                    <th scope="col">@lang('lang.table_student_town')</th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,7 +30,7 @@
                 </button>
             </td>
         </tr>
-        
+
         @empty
         <div class="text-danger">Aucun étudiant disponible</div>
         @endforelse
@@ -41,21 +41,21 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">
-                            Confirmation de suppression
+                            @lang('lang.btn_delete_student_text')
                         </h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Vous êtes sûr de vouloir supprimer cet étudiant?
+                        @lang('lang.btn_delete_student_confirm')
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            Annuler
+                            @lang('lang.btn_delete_student_cancel')
                         </button>
                         <form action="{{ route('etudiant.destroy', $etudiant->id) }}" method="post">
                             @csrf
                             @method('DELETE')
-                            <input type="submit" value="Supprimer" class="btn btn-outline-danger">
+                            <input type="submit" value="@lang('lang.btn_delete_student')" class="btn btn-outline-danger">
                         </form>
                     </div>
                 </div>
@@ -64,6 +64,6 @@
         <div class="d-flex justify-content-center">
             {{ $etudiants->links() }}
         </div>
-   
+
 </main>
 @endsection
