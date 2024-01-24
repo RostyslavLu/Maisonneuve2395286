@@ -48,4 +48,6 @@ return [
     'student_show_btn_edit' => 'Edit',
     'student_edit_text' => 'Edit a student',
     'student_edit_btn_update' => 'Update',
+    'forum_btn_add' => 'Add',
+    'forum_btn_edit' => 'Edit',
 ];

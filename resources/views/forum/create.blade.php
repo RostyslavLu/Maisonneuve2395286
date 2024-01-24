@@ -55,7 +55,7 @@
               </select>
         </div>
         <div class="mb-3">
-            <input type="submit" value="Sauvegarder" class="btn btn-success">
+            <input type="submit" value="@lang('lang.forum_btn_add')" class="btn btn-success">
         </div>
     </form>
 </main>
