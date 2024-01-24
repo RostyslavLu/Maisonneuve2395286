@@ -147,3 +147,6 @@ Route::delete('/download-delete/{download}',
 Route::get('/download-file/{download}',
     [App\Http\Controllers\DownloadController::class, 'download']
     )->name('download.download')->middleware('auth');
+Route::delete('/download-file/{download}',
+    [App\Http\Controllers\DownloadController::class, 'destroy']
+    )->name('download.destroy')->middleware('auth');

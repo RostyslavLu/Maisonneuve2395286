@@ -25,7 +25,15 @@
                 <td>{{ $file->created_at }}</td>
                 <td>{{ $file->updated_at }}</td>
                 <td>{{ $file->downloadHasUser?->name }}</td>
-                <td><a href="/download-file/{{ $file->id }}" class="btn btn-primary">Télécharger</a></td>
+                <td><a href="/download-file/{{ $file->id }}" class="btn btn-primary">Télécharger</a>
+                    @if ($file->downloadHasUser?->id == Auth::user()->id)
+                <form action="/download-delete/{{ $file->id }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger mt-2">Supprimer</button>
+                </form>
+                @endif
+                </td>
             </tr>
             @empty
             <div class="alert alert-danger">
