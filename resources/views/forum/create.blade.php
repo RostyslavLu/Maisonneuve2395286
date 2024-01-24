@@ -29,21 +29,21 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="titre" class="form-label">Titre</label>
-                    <input type="text" class="form-control" name="titre" id="titre" placeholder="Titre">
+                    <input type="text" class="form-control" name="titre" id="titre" placeholder="Title">
                   </div>
                   <div class="mb-3">
                     <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" name="message" id="message" rows="8" placeholder="Votre message"></textarea>
+                    <textarea class="form-control" name="message" id="message" rows="8" placeholder="Your message"></textarea>
                   </div>
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <label for="titre" class="form-label">Title</label>
-                    <input type="text" class="form-control" name="titre_en" id="titre" placeholder="Titre">
+                    <label for="titre_fr" class="form-label">Title</label>
+                    <input type="text" class="form-control" name="titre_fr" id="titre_fr" placeholder="Titre">
                   </div>
                   <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" name="message_en" id="message" rows="8" placeholder="Your message"></textarea>
+                    <label for="message_fr" class="form-label">Message</label>
+                    <textarea class="form-control" name="message_fr" id="message_fr" rows="8" placeholder="Votre message"></textarea>
                   </div>
             </div>
         </div>

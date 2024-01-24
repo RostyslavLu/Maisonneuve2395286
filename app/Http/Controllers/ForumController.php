@@ -16,7 +16,9 @@ class ForumController extends Controller
     {
         //
         $forums = Forum::all();
-        $categories = Category::withCount('forums')->get();
+        // $categories = Category::withCount('forums')->get();
+        $category = new Category();
+        $categories = $category->categorySelect();
         return view('forum.index', compact('forums', 'categories'));
     }
 
@@ -58,7 +60,8 @@ class ForumController extends Controller
     {
         //
         $user = Auth::user();
-        $categories = Category::all();
+        $category = new Category();
+        $categories = $category->categorySelect();
         return view('forum.create', compact('user', 'categories'));
     }
 
@@ -70,18 +73,18 @@ class ForumController extends Controller
         //
         $request->validate([
             'titre' => 'required',
-            'titre_en' => 'required',
+            'titre_fr' => 'required',
             'message' => 'required',
-            'message_en' => 'required',
+            'message_fr' => 'required',
             'category_id' => 'required'
         ]);
         $user = Auth::user();
 
         $forum = Forum::create([
             'titre' => $request->titre,
-            'titre_en' => $request->titre_en,
+            'titre_fr' => $request->titre_en,
             'message' => $request->message,
-            'message_en' => $request->message_en,
+            'message_fr' => $request->message_en,
             'user_id' => $user->id,
             'category_id' => $request->category_id
         ]);
@@ -94,6 +97,8 @@ class ForumController extends Controller
     public function show(Forum $forum)
     {
         //
+        $message = new Forum();
+        $forum = $message->forumSelect()->find($forum->id);
         return view('forum.show', compact('forum'));
     }
 
@@ -107,7 +112,8 @@ class ForumController extends Controller
         if (!$user===$forum->user_id) {
             return redirect()->route('forum.index')->with('error', 'Vous n\'avez pas les droits pour modifier ce forum');
         }
-        $categories = Category::all();
+        $category = new Category();
+        $categories = $category->categorySelect();
         return view('forum.edit', compact('forum', 'categories', 'user'));
     }
 
