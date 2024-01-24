@@ -31,7 +31,7 @@
             <input type="file" class="form-control" name="file" id="file">
         </div>
         <div class="mb-3">
-            <input type="submit" value="Ajouter" class="btn btn-success">
+            <input type="submit" value="@lang('lang.btn_add_file')" class="btn btn-success">
         </div>
     </form>
 
