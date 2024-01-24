@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LocalisationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -150,3 +151,6 @@ Route::get('/download-file/{download}',
 Route::delete('/download-file/{download}',
     [App\Http\Controllers\DownloadController::class, 'destroy']
     )->name('download.destroy')->middleware('auth');
+Route::get('/lang/{locale}',
+    [App\Http\Controllers\LocalisationController::class, 'index']
+    )->name('lang');

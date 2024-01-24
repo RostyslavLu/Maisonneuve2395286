@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{asset('./css/app.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet">
     <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -30,12 +31,14 @@
         <div class="container d-flex flex-wrap justify-content-lg-start">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link px-2 text-white">Accueil</a></li>
+            @if (Auth::user()->role == 'admin')
             <li class="nav-item dropdown"><a href="/" class="nav-link px-2 text-white dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Étudiants</a>
               <ul class="dropdown-menu">
                   <li><a href="/etudiant" class="dropdown-item">Liste des étudiants</a></li>
                   <li><a href="/etudiant-create" class="dropdown-item">Ajouter un étudiant</a></li>
               </ul>
             </li>
+            @endif
             <li class="nav-item dropdown"><a href="/" class="nav-link px-2 text-white dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Forums</a>
               <ul class="dropdown-menu">
                   <li><a href="/forum" class="dropdown-item">Liste des forums</a></li>
