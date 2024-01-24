@@ -49,4 +49,9 @@ return [
     'student_edit_btn_update' => 'Mettre à jour',
     'forum_btn_add' => 'Ajouter',
     'forum_btn_edit' => 'Modifier',
+    'forum_not_found' => 'Il n\'y a aucun forum dans cette catégorie',
+    'forum_btn_delete' => 'Supprimer',
+    'forum_message_author' => 'Par',
+    'forum_message_date' => 'Créé le',
+    'forum_message_edit' => 'Modifié le',
 ];

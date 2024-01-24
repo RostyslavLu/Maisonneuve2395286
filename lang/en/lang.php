@@ -50,4 +50,9 @@ return [
     'student_edit_btn_update' => 'Update',
     'forum_btn_add' => 'Add',
     'forum_btn_edit' => 'Edit',
+    'forum_not_found' => 'There is no forum in this category',
+    'forum_btn_delete' => 'Delete',
+    'forum_message_author' => 'By',
+    'forum_message_date' => 'Created on',
+    'forum_message_edit' => 'Edited on',
 ];

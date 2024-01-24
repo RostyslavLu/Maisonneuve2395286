@@ -2,7 +2,7 @@
 @section('content')
 
 <main class="container col-xl-10 col-xxl-8 px-4 py-5 flex-fill">
-    <a href="/forum" class="btn btn-link">Retour</a>
+    <a href="/forum" class="btn btn-link">@lang('lang.text_return')</a>
     <div class="row align-items-center g-lg-5 py-5">
         <div class="col-lg-7 text-center text-lg-start">
             <h1 class="display-4 fw-bold lh-1 mb-3">Forums</h1>
@@ -17,12 +17,12 @@
     </li>
     @empty
     <li class="list-group-item d-flex justify-content-between align-items-center">
-        <p>Aucun forum dans cette categorie</p>
+        <p>@lang('lang.forum_not_found')</p>
     </li>
     @endforelse
     </ul>
     <div class="d-flex justify-content-end mt-3">
-        <a href="/forum-create" class="btn btn-primary">Créer un forum</a>
+        <a href="/forum-create" class="btn btn-primary">@lang('lang.btn_forum_new')</a>
     </div>
     <div class="d-flex justify-content-center">
         {{ $forums->links() }}
