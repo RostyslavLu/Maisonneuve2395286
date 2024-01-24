@@ -28,6 +28,7 @@
 <body class="d-flex flex-column">
   <header class="p-4 text-bg-primary">
     <div class="container">
+        @php $locale = session()->get('locale') @endphp
         <div class="container d-flex flex-wrap justify-content-lg-start">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link px-2 text-white">Accueil</a></li>
@@ -46,6 +47,15 @@
               </ul>
             </li>
             <li><a href="/download" class="nav-link px-2 text-white">Téléchargement</a></li>
+            <div class="dropdown">
+              <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Langue
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="/lang/fr"><i class="flag flag-france"></i><span>FR</span></a></li>
+                <li><a class="dropdown-item" href="/lang/en"><i class="flag flag-united-kingdom"></i><span>EN</span></a></li>
+
+              </ul>
           </ul>
 
           <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
