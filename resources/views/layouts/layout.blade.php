@@ -31,25 +31,25 @@
         @php $locale = session()->get('locale') @endphp
         <div class="container d-flex flex-wrap justify-content-lg-start">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="/" class="nav-link px-2 text-white">Accueil</a></li>
-            @if (Auth::check() && Auth::user()->role == 'admin')
-            <li class="nav-item dropdown"><a href="#" class="nav-link px-2 text-white dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Étudiants</a>
+            <li><a href="/" class="nav-link px-2 text-white">@lang('lang.btn_home')</a></li>
+            @if (Auth::check() && Auth::user()->role == 1)
+            <li class="nav-item dropdown"><a href="#" class="nav-link px-2 text-white dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">@lang('lang.btn_students')</a>
               <ul class="dropdown-menu">
-                  <li><a href="/etudiant" class="dropdown-item">Liste des étudiants</a></li>
-                  <li><a href="/etudiant-create" class="dropdown-item">Ajouter un étudiant</a></li>
+                  <li><a href="/etudiant" class="dropdown-item">@lang('lang.btn_student_list')</a></li>
+                  <li><a href="/etudiant-create" class="dropdown-item">@lang('lang.btn_student_new')</a></li>
               </ul>
             </li>
             @endif
-            <li class="nav-item dropdown"><a href="/" class="nav-link px-2 text-white dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Forums</a>
+            <li class="nav-item dropdown"><a href="/" class="nav-link px-2 text-white dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">@lang('lang.btn_forums')</a>
               <ul class="dropdown-menu">
-                  <li><a href="/forum" class="dropdown-item">Liste des forums</a></li>
-                  <li><a href="/forum-create" class="dropdown-item">Ajouter un forum</a></li>
+                  <li><a href="/forum" class="dropdown-item">@lang('lang.btn_forum_list')</a></li>
+                  <li><a href="/forum-create" class="dropdown-item">@lang('lang.btn_forum_new')</a></li>
               </ul>
             </li>
-            <li><a href="/download" class="nav-link px-2 text-white">Téléchargement</a></li>
+            <li><a href="/download" class="nav-link px-2 text-white">@lang('lang.btn_download')</a></li>
             <div class="dropdown">
               <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Langue
+                @lang('lang.btn_language')
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="/lang/fr"><i class="flag flag-france"></i><span>FR</span></a></li>
@@ -63,11 +63,11 @@
           </form>
           <div class="text-end">
             @guest
-                <a href="/login" class="btn btn-outline-light me-2">Se connecter</a>
-                <a href="/registration" class="btn btn-warning">S'inscrire</a>
+                <a href="/login" class="btn btn-outline-light me-2">@lang('lang.btn_login')</a>
+                <a href="/registration" class="btn btn-warning">@lang('lang.btn_register')</a>
             @else
-                <a href="/dashboard" class="btn btn-outline-light me-2">Mon compte</a>
-                <a href="/logout" class="btn btn-outline-light me-2">Se déconnecter</a>
+                <a href="/dashboard" class="btn btn-outline-light me-2">@lang('lang.btn_dashboard')</a>
+                <a href="/logout" class="btn btn-outline-light me-2">@lang('lang.btn_logout')</a>
             @endguest
           </div>
         </div>

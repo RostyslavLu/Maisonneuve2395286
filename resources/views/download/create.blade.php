@@ -8,6 +8,18 @@
             <p class="col-lg-10 fs-4">Ajouter un fichier</p>
         </div>
     </div>
+    <div class="row">
+        @if($errors->has('name'))
+        <span class="alert alert-danger">
+            {{ $errors->first('name') }}
+        </span>
+        @endif
+        @if($errors->has('file'))
+        <span class="alert alert-danger">
+            {{ $errors->first('file') }}
+        </span>
+        @endif
+    </div>
     <form method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
@@ -22,7 +34,7 @@
             <input type="submit" value="Ajouter" class="btn btn-success">
         </div>
     </form>
-    
+
 </main>
 
 @endsection
